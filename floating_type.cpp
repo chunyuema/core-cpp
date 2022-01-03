@@ -2,7 +2,7 @@
 #include <iomanip>
 using namespace std;
 
-int main(){
+int float_basics(){
     cout << "Size of float: " << sizeof(float) << endl;
     cout << "Size of double: " << sizeof(double) << endl;
     cout << "Size of long double: " << sizeof(long double) << endl;
@@ -19,4 +19,20 @@ int main(){
     cout << setprecision(20) << dValue << endl;
 
     return 0;
+}
+
+int comparing_floats(){
+    float value = 1.1;
+    if (value == 1.1) {
+        cout << "value is equal to 1.1" << endl;
+    } else {
+        cout << "value is not equal to 1.1" << endl;
+    }
+    cout << "Since the float is never stored exactly as it is, using == for comparison will yield unexpected results" << endl;
+    return 0;
+}
+
+
+int main(){
+    comparing_floats();
 }
