@@ -17,5 +17,12 @@ int main(){
     } else {
         cout << "All conditions are false" << endl;
     }
+
+
+    bool condition = (v2 != 8) && (v1 == 10);
+    cout << condition << endl;
+    bool condition2 = condition;
+    cout << condition2 << endl;
+
     return 0;
 }
