@@ -1,6 +1,15 @@
 #include <iostream>
 using namespace std;
 
+void print_int_array(int values[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        cout << values[i];
+    }
+    cout << "" << endl;
+}
+
 void basic_array()
 {
     int values[3];
@@ -72,9 +81,133 @@ void multi_dimensional_array()
     }
 }
 
+void element_separator()
+{
+    int values[] = {1, 2, 3, 4, 5};
+    for (int i = 0; i < sizeof(values) / sizeof(int); i++)
+    {
+        if (i != 0)
+        {
+            cout << '|';
+        }
+        cout << values[i];
+    }
+    cout << "" << endl;
+}
+
+void find_largest_value_from_input()
+{
+    const int CAPACITY = 100;
+    double values[CAPACITY];
+    int current_size = 0;
+
+    double input;
+    cout << "Please enter numbers, Q to quit > " << flush;
+    while (cin >> input)
+    {
+        cout << "Please enter numbers, Q to quit > " << flush;
+        if (current_size < CAPACITY)
+        {
+            values[current_size] = input;
+            current_size++;
+        }
+    }
+
+    // finding the largest
+    double largest = values[0];
+    for (int i = 0; i < current_size; i++)
+    {
+        if (values[i] > largest)
+        {
+            largest = values[i];
+        }
+    }
+
+    for (int i = 0; i < current_size; i++)
+    {
+        cout << values[i];
+        if (values[i] == largest)
+        {
+            cout << "<=== largest value";
+        }
+        cout << endl;
+    }
+}
+
+void selection_sort(double values[], int size)
+{
+    for (int i = 0; i < size - 1; i++)
+    {
+        // find the min position of unsorted
+        int min_pos = i;
+        for (int j = min_pos + 1; j < size; j++)
+        {
+            if (values[j] < values[min_pos])
+            {
+                min_pos = j;
+            }
+        }
+        // swap with the index of i
+        if (min_pos != i)
+        {
+            double temp = values[i];
+            values[i] = values[min_pos];
+            values[min_pos] = temp;
+        }
+    }
+
+    cout << "Sorted array: [ ";
+    for (int k = 0; k < size; k++)
+    {
+        cout << values[k] << ' ';
+    }
+    cout << " ]" << endl;
+}
+
+int binary_search(int values[], int size, int target)
+{
+    int lo = 0;
+    int hi = size;
+    while (lo < hi)
+    {
+        int mid = (lo + hi) / 2;
+        if (values[mid] == target)
+        {
+            return mid;
+        }
+        else if (values[mid] > target)
+        {
+            hi = mid;
+        }
+        else
+        {
+            lo = mid + 1;
+        }
+    }
+    return -1;
+}
+
 int main()
 {
     // basic_array();
-    multi_dimensional_array();
+    // multi_dimensional_array();
+    // element_separator();
+    // find_largest_value_from_input();
+
+    // int values[] = {1, 2, 3, 4};
+    // print_int_array(values, 4);
+
+    // double values[] = {78.6, 67.6, 43.7, 56.9, 0.0, 76.8};
+    // selection_sort(values, 6);
+    // cout << "Values array outside the function is also sorted: [ ";
+    // for (int k = 0; k < 6; k++)
+    // {
+    //     cout << values[k] << ' ';
+    // }
+    // cout << " ]" << endl;
+
+    // int sorted_integers[] = {1, 3, 45, 67, 89};
+    // cout << binary_search(sorted_integers, 5, 67) << endl;
+
     return 0;
 }
