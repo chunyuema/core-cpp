@@ -124,6 +124,32 @@ public:
         printPostorder(r->right);
         cout << r->value << " ";
     }
+
+    TreeNode *iterativeSearch(int val)
+    {
+        if (root == NULL)
+            return root;
+        else
+        {
+            TreeNode *temp = root;
+            while (temp != NULL)
+            {
+                if (val == temp->value)
+                {
+                    return temp;
+                }
+                else if (val > temp->value)
+                {
+                    temp = temp->right;
+                }
+                else
+                {
+                    temp = temp->left;
+                }
+            }
+            return NULL;
+        }
+    }
 };
 
 int main()
@@ -133,8 +159,10 @@ int main()
     BST my_bst;
     do
     {
+        cout << "====================================================" << endl;
         cout << "BST operations: " << endl;
         cout << "1. Insert Node" << endl;
+        cout << "2. Search Node" << endl;
         cout << "4. Print BST" << endl;
         cout << "Select an operation, 0 to quit the program > " << flush;
         cin >> option;
@@ -151,6 +179,19 @@ int main()
             new_node->value = val;
             my_bst.insertNode(new_node);
             cout << endl;
+            break;
+        case 2:
+            cout << "Enter the value to be searched: ";
+            cin >> val;
+            new_node = my_bst.iterativeSearch(val);
+            if (new_node != NULL)
+            {
+                cout << "Value Found" << endl;
+            }
+            else
+            {
+                cout << "Value Not Found!" << endl;
+            }
             break;
         case 4:
             cout << "The BST looks like below: " << endl;
