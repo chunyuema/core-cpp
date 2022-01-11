@@ -150,6 +150,84 @@ public:
             return NULL;
         }
     }
+
+    int height(TreeNode *r)
+    {
+        if (r == NULL)
+            return -1;
+        else
+        {
+            int lheight = height(r->left);
+            int rheight = height(r->right);
+            if (lheight > rheight)
+                return lheight + 1;
+            else
+                return rheight + 1;
+        }
+    }
+
+    void printGivenLevel(TreeNode *r, int level)
+    {
+        if (r == NULL)
+            return;
+        else if (level == 0)
+            cout << r->value << " ";
+        else
+        {
+            printGivenLevel(r->left, level - 1);
+            printGivenLevel(r->right, level - 1);
+        }
+    }
+
+    void printLevelOrderBFS(TreeNode *r)
+    {
+        int h = height(r);
+        for (int i = 0; i <= h; i++)
+        {
+            printGivenLevel(r, i);
+        }
+    }
+
+    TreeNode *minValNode(TreeNode *node)
+    {
+        TreeNode *current = node;
+        while (current->left != NULL)
+        {
+            current = current->left;
+        }
+        return current;
+    }
+
+    TreeNode *deleteNode(TreeNode *r, int v)
+    {
+        if (r == NULL)
+            return NULL;
+        else if (v < r->value)
+            r->left = deleteNode(r->left, v);
+        else if (v > r->value)
+            r->right = deleteNode(r->right, v);
+        else if (r->left == NULL)
+        {
+            TreeNode *temp = r->right;
+            delete r;
+            return temp;
+        }
+        else if (r->right == NULL)
+        {
+            TreeNode *temp = r->left;
+            delete r;
+            return temp;
+        }
+        else
+        {
+            // find the in order successor of the node
+            TreeNode *temp = minValNode(r->right);
+            r->value = temp->value;
+            // delete the in order successor
+            r->right = deleteNode(r->right, temp->value);
+        }
+        return r;
+    }
 };
 
 int main()
@@ -163,7 +241,9 @@ int main()
         cout << "BST operations: " << endl;
         cout << "1. Insert Node" << endl;
         cout << "2. Search Node" << endl;
+        cout << "3. Get the height of tree" << endl;
         cout << "4. Print BST" << endl;
+        cout << "5. Delete Node" << endl;
         cout << "Select an operation, 0 to quit the program > " << flush;
         cin >> option;
 
@@ -193,6 +273,9 @@ int main()
                 cout << "Value Not Found!" << endl;
             }
             break;
+        case 3:
+            cout << "The BST currently has height: " << my_bst.height(my_bst.root) << endl;
+            break;
         case 4:
             cout << "The BST looks like below: " << endl;
             my_bst.print2D(my_bst.root, 5);
@@ -205,6 +288,23 @@ int main()
             cout << "Postorder printing of the tree: " << flush;
             my_bst.printPostorder(my_bst.root);
             cout << endl;
+            cout << "Level order printing of the tree: " << flush;
+            my_bst.printLevelOrderBFS(my_bst.root);
+            cout << endl;
+            break;
+        case 5:
+            cout << "Enter the value to be deleted: ";
+            cin >> val;
+            new_node = my_bst.iterativeSearch(val);
+            if (new_node == NULL)
+            {
+                cout << "Value does not exist in the BST!" << endl;
+            }
+            else
+            {
+                my_bst.deleteNode(my_bst.root, val);
+                cout << "Value deleted!" << endl;
+            }
             break;
         default:
             cout << "Please select valid operations" << endl;
