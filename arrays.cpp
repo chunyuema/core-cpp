@@ -187,8 +187,47 @@ int binary_search(int values[], int size, int target)
     return -1;
 }
 
+void array_initialization()
+{
+    // size must be a constant expression known at compile time
+    const unsigned size = 3;
+    int a1[size] = {1, 2, 3};
+    int a2[] = {1, 2, 3};
+    int a3[5] = {2, 3, 4};                           // [2, 3, 4, 0, 0]
+    string a4[3] = {"hi"};                           // ["hi", "", ""]
+    const char a5[8] = "Chunyue";                    // 8 is needed for the \0
+    char a6[] = {'C', 'h', 'u', 'n', 'y', 'u', 'e'}; // has no \0
+}
+
+void derefernce_and_pointer()
+{
+    int ia[] = {0, 2, 4, 6, 8};
+    int last;
+    last = *(ia + 4);
+    cout << "Equivalent to ia[4]: " << last << endl;
+    last = *ia + 4;
+    cout << "Equivalent to ia[0] + 4: " << last << endl;
+    for (auto i : ia)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
+}
+
+void subscript_and_pointer()
+{
+    int ia[] = {0, 2, 4, 6, 8};
+    int *p = &ia[2];
+    int j = p[1];
+    cout << "Equivalent to ia[3]: " << j << endl;
+    int k = p[-2];
+    cout << "Equivalent to ia[0]: " << k << endl;
+}
+
 int main()
 {
+    // derefernce_and_pointer();
+    subscript_and_pointer();
     // basic_array();
     // multi_dimensional_array();
     // element_separator();
