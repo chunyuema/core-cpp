@@ -227,7 +227,7 @@ void subscript_and_pointer()
 int main()
 {
     // derefernce_and_pointer();
-    subscript_and_pointer();
+    // subscript_and_pointer();
     // basic_array();
     // multi_dimensional_array();
     // element_separator();
