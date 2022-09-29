@@ -1,6 +1,23 @@
 #include <iostream>
 #include <typeinfo>
+#include <cstdio>
 using namespace std;
+
+void string_as_char_array()
+{
+    char string[] = "String";
+    printf("s is %s\n", string);
+    // looping through the string using index
+    for (int i = 0; string[i] != 0; i++)
+    {
+        printf("char is %c\n", string[i]);
+    }
+    // looping through the string using pointer
+    for (char *cp = string; *cp != 0; cp++)
+    {
+        printf("char is %c\n", *cp);
+    }
+}
 
 void direct_intialization()
 {
@@ -100,6 +117,7 @@ void modify_character()
 
 int main()
 {
+    string_as_char_array();
     // direct_intialization();
     // copy_initialization();
     // read_input();
@@ -107,6 +125,6 @@ int main()
     // string_size();
     // string_concat();
     // range_base_for();
-    modify_character();
+    // modify_character();
     return 0;
 }
