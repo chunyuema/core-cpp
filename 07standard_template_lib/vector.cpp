@@ -3,7 +3,7 @@
 using namespace std;
 
 template <typename T>
-void print_vector(string message, vector<T> values)
+void print_vector(string message, vector<T> &values)
 {
     cout << message << endl;
     for (int i = 0; i < values.size(); i++)
