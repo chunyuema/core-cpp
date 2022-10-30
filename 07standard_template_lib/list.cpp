@@ -59,18 +59,36 @@ void insert_and_erase()
 
 void remove()
 {
-    // to be implemented
+    list<int> l1 = {1, 2, 2, 3};
+    print_list("initial list", l1);
+    l1.remove(2);
+    print_list("removed 2", l1);
 }
 
 void erase_range_with_iterator()
 {
-    // to be implemented
+    list<int> l1 = {1, 2, 3, 4, 5, 6};
+    print_list("initial list", l1);
+    auto it1 = l1.begin();
+    auto it2 = l1.begin();
+    while ((*++it1 != 3) && (it1 != l1.end()))
+        ;
+    while ((*++it2 != 5) && (it2 != l1.end()))
+        ;
+    if (it1 != l1.end() && it2 != l1.end())
+    {
+        // including it1 but excluding it2
+        l1.erase(it1, it2);
+        print_list("erase from 3 to 4", l1);
+    }
 }
 
 int main()
 {
     // list_initialization();
     // list_basic_method();
-    insert_and_erase();
+    // insert_and_erase();
+    // remove();
+    // erase_range_with_iterator();
     return 0;
 }
