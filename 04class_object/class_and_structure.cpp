@@ -7,7 +7,7 @@ struct S
     int b;
 };
 
-// fields are private
+// fields are private unless specified with public keyword
 class C
 {
     int ia;
