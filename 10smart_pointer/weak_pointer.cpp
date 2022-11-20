@@ -1,0 +1,5 @@
+/*
+weak pointer does not increase the reference count for pointer
+
+weak pointer can be used when you would like to remove the circular reference
+*/
