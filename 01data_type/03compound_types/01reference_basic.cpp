@@ -16,7 +16,7 @@ void basic_reference()
     printf("y is %d\n", y);
 }
 
-void mark_reference_constant()
+void reference_to_const()
 {
     int x = 9;
     const int &y = x;
@@ -31,9 +31,17 @@ void mark_reference_constant()
     printf("y is %d\n", y);
 }
 
+void only_const_reference_for_const_var()
+{
+    const int x = 9;
+    const int &y1 = x;
+    /* y2 cannot reference to x1 since x1 is const, if y2 is allowed to refer to x1, then y2 can be used to change the value of x1, which should not be allowed */
+    // int &y2 = x;
+}
+
 int main()
 {
     // basic_reference();
-    // mark_reference_constant();
+    // reference_to_const();
     return 0;
 }
