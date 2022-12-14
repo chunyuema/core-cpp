@@ -30,6 +30,7 @@ void const_vs_regular_reference()
 {
     int i = 9;
     int &r1 = i;
+    /* the const here is a low level const since its a const in reference */
     const int &r2 = i;
 
     cout << "Before - r1: " << r1 << ", r2: " << r2 << endl;

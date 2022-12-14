@@ -71,7 +71,7 @@ void const_pointers()
     int *const px = &x;
     /* py is a pointer to a const int */
     const int *py = &x;
-    /* pz is a const pointer to a const int */
+    /* pz is a const pointer to a const int, the left const is low level const as it is saying that the pointer points to a const integer, however, the right const is top level because it is saying that the pointer itself is const */
     const int *const pz = &x;
 
     int y = 80;
