@@ -4,7 +4,11 @@ using namespace std;
 
 class A
 {
+    /*
+    This is declaring the entire class as friend class, therefore all member functions from A_manager will have access to the private non-public fields of A
+    */
     friend class A_manager;
+
     int x;
 
 public:
