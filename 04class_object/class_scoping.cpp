@@ -24,6 +24,12 @@ public:
         /* this msg will refer to the data member msg */
         cout << msg << endl;
     }
+
+    void dummy3()
+    {
+        /* forcefully using the global scope */
+        cout << ::msg << endl;
+    }
 };
 
 int main()
@@ -31,5 +37,6 @@ int main()
     S s;
     s.dummy("chunyue from the function world");
     s.dummy2();
+    s.dummy3();
     return 0;
 }
