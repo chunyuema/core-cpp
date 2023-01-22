@@ -12,6 +12,8 @@ public:
     Money() : amount{0.0} {};
     Money(double _amount) : amount{_amount} {};
     Money(double _amount1, double _amount2) : amount(_amount1 + _amount2){};
+
+    explicit Money(double _amount1, double _amount2, double _amount3) : amount(_amount1 + _amount2 + _amount3){};
     // Mark the method const so that it can be called by const objects
     double get_amount() const { return amount; }
 
@@ -36,5 +38,11 @@ int main(int argc, char *argv[])
 
     // Directly converting double double into Money object
     display_balance({50.87, 87.90});
+
+    /*
+    This constructor is declared as explicit, there fore only the following line worksm the line below cannot be used for implicit conversion
+    */
+    display_balance(Money{1.1, 2.2, 3.3});
+    // display_balance({1.1, 2.2, 3.3});
     return 0;
 }
