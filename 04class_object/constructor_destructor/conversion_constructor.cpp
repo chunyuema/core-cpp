@@ -11,6 +11,7 @@ class Money
 public:
     Money() : amount{0.0} {};
     Money(double _amount) : amount{_amount} {};
+    Money(double _amount1, double _amount2) : amount(_amount1 + _amount2){};
     // Mark the method const so that it can be called by const objects
     double get_amount() const { return amount; }
 
@@ -33,5 +34,7 @@ int main(int argc, char *argv[])
     display_balance(49.95);
     display_balance(9.99f);
 
+    // Directly converting double double into Money object
+    display_balance({50.87, 87.90});
     return 0;
 }
