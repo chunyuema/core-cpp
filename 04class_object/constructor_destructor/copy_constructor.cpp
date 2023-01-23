@@ -1,6 +1,18 @@
 #include <iostream>
 using namespace std;
 
+class Bar
+{
+    int x;
+
+public:
+    /*
+        Note that we did not create a copy constructor for Bar, but there is an implicit copy constructor generated for it.
+    */
+    Bar(int val) : x(val){};
+    int get_x() { return x; }
+};
+
 class Foo
 {
 private:
@@ -42,6 +54,10 @@ Foo copy_return(Foo f)
 
 int main()
 {
+    Bar bar1(4);
+    Bar bar2 = bar1; // This is possible with synthesized copy constructor
+    cout << "bar2 = { x: " << bar2.get_x() << " }" << endl;
+
     /* This will use the default constructor */
     Foo f1;
     Foo f2(3);
