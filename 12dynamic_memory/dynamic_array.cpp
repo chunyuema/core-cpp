@@ -24,8 +24,24 @@ void basic_dynamic_array()
     delete[] q;
 }
 
+void unique_pointer_and_dynamic_array()
+{
+    size_t n = 5;
+    unique_ptr<int[]> p(new int[n]{1, 2, 3, 4, 5});
+    cout << "array = { ";
+    for (size_t i = 0; i != n; ++i)
+    {
+        // Use subscript operator to access the element from the array
+        cout << p[i] << " ";
+    }
+    cout << "}" << endl;
+    // This will automatically call delete[] p to free the memory
+    p.reset();
+}
+
 int main()
 {
-    basic_dynamic_array();
+    // basic_dynamic_array();
+    unique_pointer_and_dynamic_array();
     return 0;
 }
