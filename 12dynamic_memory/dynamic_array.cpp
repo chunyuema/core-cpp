@@ -24,6 +24,25 @@ void basic_dynamic_array()
     delete[] q;
 }
 
+void shared_pointer_and_dynamic_array()
+{
+    size_t n = 5;
+    shared_ptr<int> p(new int[n]{1, 2, 3, 4, 5},
+                      // You need to supply the deleter here for it to work properly
+                      [](int *p)
+                      {
+                          cout << "Deleting the dynamic array" << endl;
+                          delete[] p;
+                      });
+    for (size_t i = 0; i != n; ++i)
+    {
+        // Subscriptor is not supported for shared_ptr dynamic arrays
+        cout << *(p.get() + i) << " ";
+    }
+    // This uses the customized deleter you have supplied
+    p.reset();
+}
+
 void unique_pointer_and_dynamic_array()
 {
     size_t n = 5;
@@ -42,6 +61,7 @@ void unique_pointer_and_dynamic_array()
 int main()
 {
     // basic_dynamic_array();
-    unique_pointer_and_dynamic_array();
+    // unique_pointer_and_dynamic_array();
+    shared_pointer_and_dynamic_array();
     return 0;
 }
