@@ -43,3 +43,12 @@ private:
 };
 
 std::allocator<std::string> StrVec::alloc;
+
+void StrVec::push_back(const std::string &s)
+{
+    // first ensure that there is still room for the new string to be added
+    check_and_alloc();
+
+    // add the string into the string vector
+    alloc.construct(first_free++, s);
+}
