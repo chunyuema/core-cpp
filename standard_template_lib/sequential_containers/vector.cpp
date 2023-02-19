@@ -39,10 +39,6 @@ void vector_initialization()
     vector<int> v1 = {1, 2, 3};
     vector<int> v2{4, 5, 6};
 
-    // fill vector with same values
-    vector<int> v3(10, -1);
-    vector<string> v4(5, "hi");
-    vector<string> v5(5); // five empty strings
     vector<string> v6 = {"apple", "bear", "coke"};
 
     // initialize from c array
