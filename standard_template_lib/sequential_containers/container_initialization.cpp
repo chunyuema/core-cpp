@@ -26,6 +26,7 @@ void initialize_with_another_container()
     // vector<const char *> vnames3(lnames);
 
     print_vector("vnames", vnames);
+    print_vector_with_iterator("vnames", vnames);
 }
 
 int main()
