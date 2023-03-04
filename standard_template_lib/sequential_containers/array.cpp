@@ -18,6 +18,10 @@ void array_initialization()
     array<string, 3> a2 = {"hello", "hi", "how are you?"};
     print_array("integer array", a1);
     print_array("string array", a2);
+
+    // copy initialization
+    array<string, 3> a3 = a2;
+    print_array("string array", a3);
 }
 
 void accessing_by_index()
@@ -43,7 +47,7 @@ void direct_access_data()
 int main()
 {
     cout << "A wrapper around the traditional c array" << endl;
-    // array_initialization();
+    array_initialization();
     // accessing_by_index();
     // direct_access_data();
     return 0;
