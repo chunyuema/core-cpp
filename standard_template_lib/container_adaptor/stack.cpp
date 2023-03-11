@@ -1,5 +1,6 @@
 #include <stack>
 #include <iostream>
+#include <vector>
 #include <cstdlib>
 
 using namespace std;
@@ -15,6 +16,19 @@ void stack_basics()
         cout << s.top() << "\n";
         s.pop();
     }
+}
+
+void stack_initialization_with_deque()
+{
+    deque<int> myDeque(3, 100);
+    stack<int> myStack(myDeque);
+}
+
+void stack_initialization_with_vector()
+{
+    vector<int> myVector(3, 100);
+    // Need to specify that this stack is using vector implementation
+    stack<int, vector<int>> myStack(myVector);
 }
 
 int stack_calculator()
