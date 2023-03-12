@@ -3,6 +3,7 @@
 #include <list>
 #include <string>
 #include <iostream>
+#include "complex.h"
 
 using namespace std;
 
@@ -20,9 +21,20 @@ void accumulate_string()
     // cout << accumulate(strList.begin(), strList.end(), "") << endl;
 }
 
+void accumulate_object_with_plus_defined()
+{
+    Complex c1(10, 5);
+    Complex c2(2, 4);
+    Complex c3(8, 7);
+    list<Complex> complexList = {c1, c2, c3};
+    Complex c4 = accumulate(complexList.begin(), complexList.end(), Complex(0, 0));
+    c4.print();
+}
+
 int main()
 {
     accumulate_int();
     accumulate_string();
+    accumulate_object_with_plus_defined();
     return 0;
 }
