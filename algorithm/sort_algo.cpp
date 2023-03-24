@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <array>
 #include "../print_containers.h"
 
 using namespace std;
@@ -47,10 +48,28 @@ void partial_sort()
     print_vector("myvector", myvector);
 }
 
+void sort_arrays()
+{
+    int myints[] = {32, 71, 12, 45, 26, 80, 53, 33};
+    int size = sizeof(myints) / sizeof(myints[0]);
+    sort(myints, myints + size);
+    for (int i = 0; i < size; ++i)
+        cout << myints[i] << " ";
+    cout << endl;
+
+    array<int, 8> myints2 = {32, 71, 12, 45, 26, 80, 53, 33};
+    // myints2.begin() + 8 is allowed because the iterator is random access iterator
+    sort(myints2.begin(), myints2.begin() + 8);
+    for (int i = 0; i < size; ++i)
+        cout << myints2[i] << " ";
+    cout << endl;
+}
+
 int main()
 {
     // use_sort();
     // customize_sort();
-    partial_sort();
+    // partial_sort();
+    sort_arrays();
     return 0;
 }
