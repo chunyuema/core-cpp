@@ -3,6 +3,8 @@
 #include <vector>
 #include <array>
 #include <deque>
+#include <list>
+#include <forward_list>
 #include "../print_containers.h"
 
 using namespace std;
@@ -53,6 +55,18 @@ void generic_sort()
     cout << name << endl;
 }
 
+/* List and Forward List are not supported by generic sort due to lack of Random Access Iterator */
+void list_sort()
+{
+    list<string> fruits = {"pear", "apple", "grape", "peach"};
+    fruits.sort();
+    print_list_with_iterator("Fruits", fruits);
+
+    forward_list<int> numbers = {32, 71, 12, 45, 26, 80, 53, 33};
+    numbers.sort();
+    print_forward_list_with_iterator("Numbers", numbers);
+}
+
 void partial_sort()
 {
     // code from https://cplusplus.com/reference/algorithm/sort/
@@ -80,5 +94,6 @@ void customize_sort()
 int main()
 {
     generic_sort();
+    list_sort();
     return 0;
 }

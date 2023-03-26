@@ -2,6 +2,7 @@
 #include <vector>
 #include <list>
 #include <deque>
+#include <forward_list>
 
 using namespace std;
 
@@ -35,6 +36,21 @@ template <typename T>
 void print_list_with_iterator(std::string message, list<T> &values)
 {
     cout << message << " list = [ ";
+    auto it = values.begin();
+    while (it != values.end())
+    {
+        cout << *it;
+        it++;
+        if (it != values.end())
+            cout << ", ";
+    }
+    cout << " ]" << endl;
+}
+
+template <typename T>
+void print_forward_list_with_iterator(std::string message, forward_list<T> &values)
+{
+    cout << message << " forward list = [ ";
     auto it = values.begin();
     while (it != values.end())
     {
