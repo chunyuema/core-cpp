@@ -2,9 +2,30 @@
 #include <list>
 #include <vector>
 #include <iterator>
+#include <set>
+#include <algorithm>
 #include "../print_containers.h"
 
 using namespace std;
+
+void use_inserter_with_multiset()
+{
+    multiset<int> s{1, 2, 3};
+    fill_n(inserter(s, s.end()), 2, 4);
+    for (int n : s)
+        cout << n << ' ';
+    cout << '\n';
+}
+
+void use_inserter_to_copy_from_containers()
+{
+    vector<int> v1{1, 2, 3};
+    vector<int> v2{400, 500, 600};
+    copy(v2.begin(), v2.end(), inserter(v1, ++v1.begin()));
+    // Use the next(v1.begin()) to substitute ++v1.begin()
+    // copy(v2.begin(), v2.end(), inserter(v1, ++v1.begin()));
+    print_vector("v1 ", v1);
+}
 
 void inserter_vs_insert()
 {
@@ -14,7 +35,7 @@ void inserter_vs_insert()
     // insert at the iterator
     l1.insert(it1, 4);
     print_list_with_iterator("l1", l1);
-    cout << "The iterator it1 is pointing at: " << *it1 << endl;
+    cout << "Iterator it1 is pointing at: " << *it1 << endl;
 
     list<int> l2 = {1, 2, 3};
     // getting the inserter for insertion
@@ -69,8 +90,10 @@ void futile_ops()
 
 int main()
 {
-    inserter_vs_insert();
-    front_inserter_iterator();
-    futile_ops();
+    // use_inserter_with_multiset();
+    // use_inserter_to_copy_from_containers();
+    // inserter_vs_insert();
+    // front_inserter_iterator();
+    // futile_ops();
     return 0;
 }
