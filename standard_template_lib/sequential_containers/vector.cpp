@@ -34,6 +34,11 @@ void insert_and_erase()
     print_vector("erase element at index 3", v);
 }
 
+void initialize_bulk_with_value()
+{
+    vector<int> v(4, 0);
+    print_vector("Initialized in bulk with size and value", v);
+}
 void vector_initialization()
 {
     vector<int> v1 = {1, 2, 3};
